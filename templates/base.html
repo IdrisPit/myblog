@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog Site</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="/" class="title" > My Personal Blog </a>
+        </h1>
+    </header>
+    <div class="container">
+        {% if user.is_authenticated %}
+            <p>You are logged in</p>
+            <p>hey there: {{ user.username }}</p>
+            <p> Please <a href="{% url 'logout' %}" > Logout</a></p>
+        {% else %}
+            <p> You are not logged in </p>
+            <p><a href="{% url 'login' %}"> Login Here</a></p>
+        {% endif %}
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{%for ar in object_list %}
+<div class="article">
+    <h3>
+        <a href="{%url 'article_page' ar.pk %}"> {{ar.title}}</a>
+    </h3>
+
+</div>
+{% endfor %}
+{% endblock content %}
